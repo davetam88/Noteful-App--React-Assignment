@@ -6,6 +6,11 @@ This app uses a host of React APP techniques. It allows the user to create or re
 
 This App is user-friendly and requires minimal network access(beside the fetches). A locally generated server is used to provide data storage for this project.
 
+## >> Screenshot 
+
+![startup page](images/startup.jpg)
+
+
 ## >> Technologies used in this APP:
 -> React (in the order of course progression):
 * React Router
@@ -28,11 +33,6 @@ This App is user-friendly and requires minimal network access(beside the fetches
 -> HTML
 
 ## >> Github Link: [Github Link](https://github.com/davetam88/Noteful-App--React-Assignment)
-
-## >> Screenshot 
-
-![startup page](images/startup.jpg)
-
 
 ## >> SETUP
 
