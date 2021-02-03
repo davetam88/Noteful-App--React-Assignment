@@ -36,13 +36,14 @@
 }
 
 .NoteNavList__folder-link.active {
+  background-color: #154110;
   /* background-color: #102541; */
-  background-color: #2a5181;
+  /* background-color: #2a5181; */
 }
 
 .NoteNavList__num-notes {
   color: #adadad;
   display: block;
-  /* float: right; */
+  float: right;
   font-size: 10px;
 }

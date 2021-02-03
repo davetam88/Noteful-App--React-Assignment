@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import NoteNavList from '../NoteNavList/NoteNavList';
 import NoteNavPage from '../NoteNavPage/NoteNavPage';
@@ -9,7 +10,10 @@ import NotefulContext from './NotefulContext';
 import config from './config';
 import { getNotesForFolder, findNote, findFolder } from '../notes-helpers';
 import './App.css';
-import '../wiremain.css';
+import AddFolder from '../AddFolder/AddFolder';
+import AddNote from '../AddNote/AddNote';
+import AddNoteError from '../AddNote/AddNoteError';
+
 
 class App extends Component {
     state = {
@@ -18,10 +22,16 @@ class App extends Component {
     };
 
     addNote = note => {
-        //     console.log(`before this.state.Notes :>> `, this.state.Notes); // dbg.
         this.setState({
             notes: [...this.state.notes, note],
         })
+    }
+
+    addFolder = folder => {
+        this.setState({
+            folders: [...this.state.folders, folder],
+        })
+
     }
 
     deleteNote = NoteId => {
@@ -57,7 +67,6 @@ class App extends Component {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                // 'Authorization': `Bearer ${config.API_KEY}`
             }
         })
             .then(res => {
@@ -73,10 +82,8 @@ class App extends Component {
     }
 
 
-    // setup nav area routes
     renderNavRoutes() {
         const { notes, folders } = this.state;
-
 
         return (
             <>
@@ -87,7 +94,6 @@ class App extends Component {
                         path={path}
                         render={routeProps => (
                             <NoteNavList
-                                routeNum={"1 or 2"}
                                 folders={folders}
                                 notes={notes}
                                 {...routeProps}
@@ -96,8 +102,6 @@ class App extends Component {
                     />
                 ))
                 }
-
-                {/* *** ROUTE 3 *** */}
 
                 <Route
                     path="/note/:noteId"
@@ -108,24 +112,27 @@ class App extends Component {
                         return <NoteNavPage routeNum={3} {...routeProps} folder={folder} />;
                     }}
                 />
-                {/* *** ROUTE 4 *** */}
 
-                <Route path="/add-folder" component={NoteNavPage} />
 
-                {/* *** ROUTE 5 *** */}
+                < Route
+                    // key={path}
+                    path="/add-folder"
+                    render={routeProps => (
+                        <NoteNavList
+                            routeNum={"9"}
+                            folders={folders}
+                            notes={notes}
+                            {...routeProps}
+                        />
+                    )}
+                />
                 <Route path="/add-note" component={NoteNavPage} />
             </>
         );
     }
 
-
-    // show <NoteMainList and <NoteMainPage depending on route
-    // render this when clikc refresh and
     renderMainRoutes() {
-
-        // const { notes, folders } = this.state;
         const { notes } = this.state;
-
 
         return (
             <>
@@ -134,6 +141,7 @@ class App extends Component {
                         exact
                         key={path}
                         path={path}
+
                         render={routeProps => {
                             const { folderId } = routeProps.match.params;
                             const notesForFolder = getNotesForFolder(
@@ -150,23 +158,42 @@ class App extends Component {
                     />
                 ))}
 
-                <Route path="/note/:noteId" component={NoteMainPage} />
-                {/* <Route
+                <Route
+                    // exact
                     path="/note/:noteId"
                     render={routeProps => {
                         const { noteId } = routeProps.match.params;
-                        const note = findNote(notes, noteId);
-                        return <NoteMainPage {...routeProps} note={note} />;
+                        const curNote = findNote(notes, noteId) || {};
+                        const xnotes = [];
+                        xnotes[0] = curNote;
+                        return (
+                            // <NoteMainList
+                            <NoteMainPage
+                                {...routeProps}
+                                notes={xnotes}
+                                routeNum={"/noteid"}
+                            />
+                        );
                     }}
-                /> */}
+                />
+
+                < Route path="/add-folder" component={AddFolder} />
+
+                <AddNoteError>
+                    < Route path="/add-note" component={AddNote} />
+                </AddNoteError >
+
+                )
             </>
         );
     }
 
     render() {
 
-
         const contextValue = {
+            folders: this.state.folders,
+            notes: this.state.notes,
+            addFolder: this.addFolder,
             addNote: this.addNote,
             deleteNote: this.deleteNote,
         }
@@ -174,19 +201,21 @@ class App extends Component {
             <div className="App">
                 <NotefulContext.Provider value={contextValue}>
                     <nav className="App__nav">{this.renderNavRoutes()}</nav>
-                    {/* <header className="App__header"> */}
-                    <header className="header-container">
-                        <div className="App-title">
-                            <Link to="/">Noteful</Link>
-                        </div>
-                        <div className="status">
-                        </div>
 
+                    <header className="App__header">
+                        <h1>
+                            <FontAwesomeIcon icon="check-double" />
+                            {' '}
+                            <Link to="/">Noteful</Link>{' '}
+                            <FontAwesomeIcon icon="check-double" />
+
+                        </h1>
                     </header>
 
                     <main className="App__main">{this.renderMainRoutes()}</main>
+
                 </NotefulContext.Provider>
-            </div>
+            </div >
 
 
         );
@@ -197,10 +226,3 @@ class App extends Component {
 export default App;
 
 
-// old header
-// <h1>
-//     <FontAwesomeIcon icon="check-double" />
-//     {' '}
-//     <Link to="/">Noteful</Link>{' '}
-//     <FontAwesomeIcon icon="check-double" />
-// </h1>

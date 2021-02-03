@@ -4,8 +4,6 @@ import NotefulContext from '../App/NotefulContext';
 import { findNote } from '../notes-helpers'
 import './NoteMainPage.css'
 
-
-// export default function NoteMainPage(props) {
 export default class NoteMainPage extends React.Component {
   static defaultProps = {
     match: {
@@ -19,22 +17,14 @@ export default class NoteMainPage extends React.Component {
     this.props.history.push(`/`)
   }
 
-
-  // return(
   render() {
-
     const { notes = [] } = this.context
     const { noteId } = this.props.match.params
     const note = findNote(notes, noteId) || { content: '' }
 
-
     return (
       <section className='NoteMainPage' >
         <Note
-          // id={props.note.id}
-          // name={props.note.name}
-          // modified={props.note.modified}
-
           id={note.id}
           name={note.name}
           modified={note.modified}
@@ -51,8 +41,3 @@ export default class NoteMainPage extends React.Component {
   }
 }
 
-// NoteMainPage.defaultProps = {
-//   note: {
-//     content: '',
-//   }
-// }

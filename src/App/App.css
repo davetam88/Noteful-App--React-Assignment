@@ -7,6 +7,7 @@
   min-height: 100vh;
 }
 
+
 .App__nav {
   background-color: #0b1b32;
   color: #fff;
@@ -15,7 +16,6 @@
   overflow: auto;
 }
 
-/* 2.1  */
 
 .App__header {
   background-color: #0b1f3a;
@@ -28,9 +28,10 @@
 }
 
 .App__header a {
-  color: blueviolet;
-  /* color: #bdbdbd; */
+  /* color: blueviolet; */
+  color: #bdbdbd;
 }
+
 
 .App__main {
   background-color: #102541;

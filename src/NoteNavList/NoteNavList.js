@@ -4,15 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import { countNotesForFolder } from '../notes-helpers'
 import './NoteNavList.css'
+import PropTypes from 'prop-types';
 
-
-import '../wiremain.css'
 
 export default function NoteNavList(props) {
 
   return (
-    <div className="sidebar-list">
-      <ul className="ul-list-style">
+    <div className='NoteNavList'>
+      <ul className='NoteNavList__list'>
         {props.folders.map(folder =>
           <li key={folder.id}>
             <NavLink
@@ -46,47 +45,15 @@ export default function NoteNavList(props) {
   )
 }
 
-
 NoteNavList.defaultProps = {
-  folders: []
+  note: [],
+  folders: [],
 }
 
-  // * the native sidebar.
-
-  // < div className='sidebar-add-folder' >
-  //       <button>Add Folder..</button>
-  //       <link 
-  //       <a href="../wire404.html#section2">ll</a>
-  //     </div >
-
-
-
-
-        // <li className="sidebar-item">folder 1</li>
-        // <li className="sidebar-item">folder 2</li>
-
-
-
-//   < div className = 'NoteNavList' >
-//     <ul className='NoteNavList__list'>
-//       {props.folders.map(folder =>
-//
-// 
-//         <li key={folder.id}>
-//           <NavLink
-//             className='NoteNavList__folder-link'
-//             to={`/folder/${folder.id}`}
-//           >
-//             <span className='NoteNavList__num-notes'>
-//               {countNotesForFolder(props.notes, folder.id)}
-//             </span>
-//             {folder.name}
-//           </NavLink>
-//         </li>
-//       )}
-//     </ul>
-// {/* nav button here */ }
-//     </div >
+NoteNavList.propTypes = {
+  notes: PropTypes.array,
+  folders: PropTypes.array,
+}
 
 
 

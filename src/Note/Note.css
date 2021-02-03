@@ -12,10 +12,11 @@
 
 .Note__delete {
   --note-button-height: 32px;
-  /* background-color: #041a3a; */
-  background-color: #a7a5a5;
+  background-color: #041a3a;
+  /* background-color: #a7a5a5; */
   border: 0;
-  color: red;
+  color: #bdbcbc;
+  /* color: red; */
   float: right;
   font-size: 14px;
   height: var(--note-button-height);
@@ -42,8 +43,8 @@
 }
 
 .Note__title a {
-  /* color: #cacaca; */
-  color: black;
+  color: #cacaca;
+  /* color: black; */
   display: block;
   text-decoration: none;
 }

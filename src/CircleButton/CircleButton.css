@@ -20,8 +20,6 @@ a.NavCircleButton {
   padding: 16px 8px 8px;
 }
 
-/* finger pointer */
-
 .NavCircleButton:hover {
   cursor: pointer;
 }
