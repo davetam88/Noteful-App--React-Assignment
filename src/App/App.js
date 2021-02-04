@@ -12,7 +12,7 @@ import { getNotesForFolder, findNote, findFolder } from '../notes-helpers';
 import './App.css';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
-import AddNoteError from '../AddNote/AddNoteError';
+
 
 
 class App extends Component {
@@ -25,6 +25,7 @@ class App extends Component {
         this.setState({
             notes: [...this.state.notes, note],
         })
+
     }
 
     addFolder = folder => {
@@ -83,6 +84,7 @@ class App extends Component {
 
 
     renderNavRoutes() {
+
         const { notes, folders } = this.state;
 
         return (
@@ -113,7 +115,6 @@ class App extends Component {
                     }}
                 />
 
-
                 < Route
                     // key={path}
                     path="/add-folder"
@@ -133,7 +134,6 @@ class App extends Component {
 
     renderMainRoutes() {
         const { notes } = this.state;
-
         return (
             <>
                 {['/', '/folder/:folderId'].map(path => (
@@ -179,9 +179,7 @@ class App extends Component {
 
                 < Route path="/add-folder" component={AddFolder} />
 
-                <AddNoteError>
-                    < Route path="/add-note" component={AddNote} />
-                </AddNoteError >
+                < Route path="/add-note" component={AddNote} />
 
                 )
             </>
@@ -189,7 +187,6 @@ class App extends Component {
     }
 
     render() {
-
         const contextValue = {
             folders: this.state.folders,
             notes: this.state.notes,
@@ -221,7 +218,6 @@ class App extends Component {
         );
     }
 }
-
 
 export default App;
 

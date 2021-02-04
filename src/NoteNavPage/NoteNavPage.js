@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 export default function NoteNavPage(props) {
 
+
   return (
 
     < div className='NoteNavPage' >
@@ -36,10 +37,10 @@ NoteNavPage.defaultProps = {
   history: {
     goBack: () => { }
   },
-  folder: "",
+  folder: {},
 }
 
 NoteNavPage.propTypes = {
   history: PropTypes.object,
-  folder: PropTypes.string,
+  folder: PropTypes.object,
 }

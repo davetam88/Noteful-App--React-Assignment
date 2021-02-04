@@ -3,6 +3,7 @@ import Note from '../Note/Note'
 import NotefulContext from '../App/NotefulContext';
 import { findNote } from '../notes-helpers'
 import './NoteMainPage.css'
+import PropTypes from 'prop-types';
 
 export default class NoteMainPage extends React.Component {
   static defaultProps = {
@@ -41,3 +42,6 @@ export default class NoteMainPage extends React.Component {
   }
 }
 
+NoteMainPage.propTypes = {
+  params: PropTypes.object
+}
