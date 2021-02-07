@@ -2,7 +2,7 @@
 
 ## >> App Summary:
 
-This app uses a host of React APP techniques. It allows the user to create or remove folder and note items; The folder list is shown at the navigation bar on the left and the Note items list on the right. Users can add and remove folders, note items with the use of one of the 2 forms(with dynamic validation) and buttons. A link at the top bring user back to the landing page.
+This app uses a host of React APP techniques. It allows the user to create or remove folder and note items; The folder list is shown at the navigation bar on the left and the Note items list on the right. Users can add and remove folders and notes by using one of the 2 forms(with dynamic validation). A link at the top bring user back to the landing page.
 
 This App is user-friendly and requires minimal network access(beside the fetches). A locally generated server is used to provide data storage for this project.
 
