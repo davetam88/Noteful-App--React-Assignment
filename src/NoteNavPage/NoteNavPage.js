@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 
 export default function NoteNavPage(props) {
 
-
   return (
-
     < div className='NoteNavPage' >
       <CircleButton
         tag='button'
@@ -27,6 +25,7 @@ export default function NoteNavPage(props) {
             {props.folder.name}
 
           </h3>
+
         )
       }
     </div >
@@ -41,6 +40,6 @@ NoteNavPage.defaultProps = {
 }
 
 NoteNavPage.propTypes = {
-  history: PropTypes.object,
+  goBack: PropTypes.func,
   folder: PropTypes.object,
 }

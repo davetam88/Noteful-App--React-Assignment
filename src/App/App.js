@@ -25,7 +25,6 @@ class App extends Component {
         this.setState({
             notes: [...this.state.notes, note],
         })
-
     }
 
     addFolder = folder => {
@@ -42,6 +41,7 @@ class App extends Component {
         this.setState({
             notes: newNotes
         })
+
     }
 
     componentDidMount() {
@@ -50,7 +50,7 @@ class App extends Component {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                // 'Authorization': `Bearer ${config.API_KEY}`
+                'Authorization': `Bearer ${config.API_KEY}`
             }
         })
             .then(res => {
@@ -82,9 +82,7 @@ class App extends Component {
 
     }
 
-
     renderNavRoutes() {
-
         const { notes, folders } = this.state;
 
         return (
@@ -120,7 +118,6 @@ class App extends Component {
                     path="/add-folder"
                     render={routeProps => (
                         <NoteNavList
-                            routeNum={"9"}
                             folders={folders}
                             notes={notes}
                             {...routeProps}
@@ -158,27 +155,8 @@ class App extends Component {
                     />
                 ))}
 
-                <Route
-                    // exact
-                    path="/note/:noteId"
-                    render={routeProps => {
-                        const { noteId } = routeProps.match.params;
-                        const curNote = findNote(notes, noteId) || {};
-                        const xnotes = [];
-                        xnotes[0] = curNote;
-                        return (
-                            // <NoteMainList
-                            <NoteMainPage
-                                {...routeProps}
-                                notes={xnotes}
-                                routeNum={"/noteid"}
-                            />
-                        );
-                    }}
-                />
-
+                <Route path="/note/:noteId" component={NoteMainPage} />
                 < Route path="/add-folder" component={AddFolder} />
-
                 < Route path="/add-note" component={AddNote} />
 
                 )
@@ -187,6 +165,7 @@ class App extends Component {
     }
 
     render() {
+
         const contextValue = {
             folders: this.state.folders,
             notes: this.state.notes,

@@ -12,6 +12,7 @@ export default function NoteNavList(props) {
   return (
     <div className='NoteNavList'>
       <ul className='NoteNavList__list'>
+        {/* folder list */}
         {props.folders.map(folder =>
           <li key={folder.id}>
             <NavLink
@@ -27,7 +28,7 @@ export default function NoteNavList(props) {
         )}
       </ul>
 
-
+      {/* the button */}
       < div className='NoteNavList__button-wrapper' >
         <CircleButton
           tag={Link}

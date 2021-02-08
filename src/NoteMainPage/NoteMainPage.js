@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react';
 import Note from '../Note/Note'
 import NotefulContext from '../App/NotefulContext';
 import { findNote } from '../notes-helpers'
 import './NoteMainPage.css'
 import PropTypes from 'prop-types';
 
-export default class NoteMainPage extends React.Component {
+export default class NoteMainPage extends Component {
   static defaultProps = {
     match: {
       params: {}
@@ -19,9 +19,11 @@ export default class NoteMainPage extends React.Component {
   }
 
   render() {
+
     const { notes = [] } = this.context
     const { noteId } = this.props.match.params
     const note = findNote(notes, noteId) || { content: '' }
+
 
     return (
       <section className='NoteMainPage' >

@@ -13,14 +13,12 @@ class AddNoteError extends Component {
   }
 
   componentDidCatch(error, info) {
-    console.log('error :>> ', error);
-    console.log('info :>> ', info);
+  
   //  logComponentStackToMyService(info.componentStack);
   }
 
   render() {
-    // handle error and render error mesage.
-    if (this.state.hasError)
+        if (this.state.hasError)
     {
       return (
         <h2>There's an Error in AddNote.</h2>
